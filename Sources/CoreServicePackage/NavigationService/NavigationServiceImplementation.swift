@@ -8,8 +8,10 @@
 import SwiftUI
 
 open class NavigationService: ObservableObject, NavigationProtocol {
-    private var navigation: NavigationModelProtocol?
-    private var tabBar: NavigationTabModelProtocol?
+    public var navigation: NavigationModelProtocol?
+    public var tabBar: NavigationTabModelProtocol?
+    
+    public init() { }
     
     public var selectedTab: Int {
         return tabBar?.selectedIndex ?? 0

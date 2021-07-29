@@ -14,7 +14,7 @@ open class StoreService: ObservableObject, StoreProtocol {
     private var containsSet: Set<String>    = .init()
     private var cancellable: AnyCancellable?
     
-    init() {
+    public init() {
         loadFavoriteData()
         cancellable = NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)
             .sink { value in

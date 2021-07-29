@@ -8,6 +8,8 @@
 import Foundation
 
 open class ApiService: ApiServiceProtocol {
+    public init() { }
+    
     public func getStockList(exchange: String, outputSize: Int, offset: Int, completion: @escaping ((_ data: StockList?, _ error: Error?) -> Void)) {
         MarketstackRequests.getStockListWithRequestBuilder(exchange: exchange,
                                                            outputSize: outputSize,
