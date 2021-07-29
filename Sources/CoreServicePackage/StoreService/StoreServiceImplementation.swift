@@ -8,8 +8,8 @@
 import SwiftUI
 import Combine
 
-public final class StoreService: ObservableObject, StoreProtocol {
-    @Published var favoriteData: [Stock]    = []
+open class StoreService: ObservableObject, StoreProtocol {
+    @Published public var favoriteData: [Stock]    = []
     
     private var containsSet: Set<String>    = .init()
     private var cancellable: AnyCancellable?
@@ -22,28 +22,28 @@ public final class StoreService: ObservableObject, StoreProtocol {
             }
     }
     
-    func addToFavorite(_ stock: Stock) {
+    public func addToFavorite(_ stock: Stock) {
         favoriteData.append(stock)
         containsSet.insert(stock.symbol)
     }
     
-    func removeFromFavorite(_ offset: IndexSet) {
+    public func removeFromFavorite(_ offset: IndexSet) {
         favoriteData.remove(atOffsets: offset)
         containsSet = Set(favoriteData.map { $0.symbol })
     }
     
-    func isFavorite(_ symbol: String) -> Bool {
+    public func isFavorite(_ symbol: String) -> Bool {
         return containsSet.contains(symbol)
     }
     
-    func saveFavoriteData() {
+    public func saveFavoriteData() {
         let stockList = StockList(data: favoriteData)
         let payload: Data? = try? JSONEncoder().encode(stockList)
         
         UserDefaults.standard.set(payload, forKey: "favoriteData")
     }
     
-    func loadFavoriteData() {
+    public func loadFavoriteData() {
         guard let stockData = UserDefaults.standard.data(forKey: "favoriteData") else { return }
         
         if let stockList = try? JSONDecoder().decode(StockList.self, from: stockData) {

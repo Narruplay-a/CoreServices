@@ -7,51 +7,51 @@
 
 import SwiftUI
 
-public final class NavigationService: ObservableObject, NavigationProtocol {
+open class NavigationService: ObservableObject, NavigationProtocol {
     private var navigation: NavigationModelProtocol?
     private var tabBar: NavigationTabModelProtocol?
     
-    var selectedTab: Int {
+    public var selectedTab: Int {
         return tabBar?.selectedIndex ?? 0
     }
     
-    func registerTabBarView(with model: NavigationTabModelProtocol) {
+    public func registerTabBarView(with model: NavigationTabModelProtocol) {
         self.tabBar = model
     }
 
-    func registerNavigationView(with model: NavigationModelProtocol) {
+    public func registerNavigationView(with model: NavigationModelProtocol) {
         self.navigation = model
     }
     
-    func selectTab(with index: Int) {
+    public func selectTab(with index: Int) {
         tabBar?.selectedIndex = index
     }
     
-    func present(view: AnyView) {
+    public func present(view: AnyView) {
         tabBar?.present(view: view)
     }
     
-    func dismiss() {
+    public func dismiss() {
         tabBar?.dismissPresentedView()
     }
     
-    func show(view: AnyView) {
+    public func show(view: AnyView) {
         navigation?.push(view)
     }
     
-    func back(toRoot: Bool) {
+    public func back(toRoot: Bool) {
         navigation?.pop(to: toRoot ? .root : .previous)
     }
     
-    func showTabBar() {
+    public func showTabBar() {
         tabBar?.isTabBarVisible = true
     }
     
-    func hideTabBar() {
+    public func hideTabBar() {
         tabBar?.isTabBarVisible = false
     }
     
-    func updateNavigation(with title: String) {
+    public func updateNavigation(with title: String) {
         navigation?.title = title
     }
 }
