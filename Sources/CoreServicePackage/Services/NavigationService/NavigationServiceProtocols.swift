@@ -41,3 +41,8 @@ protocol NavigationControlProtocol {
 }
 
 protocol NavigationProtocol: NavigationRegisterProtocol, NavigationControlProtocol { }
+
+public enum PopDestination {
+    case previous
+    case root
+}
