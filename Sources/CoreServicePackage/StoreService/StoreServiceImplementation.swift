@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-final class StoreService: ObservableObject, StoreProtocol {
+public final class StoreService: ObservableObject, StoreProtocol {
     @Published var favoriteData: [Stock]    = []
     
     private var containsSet: Set<String>    = .init()

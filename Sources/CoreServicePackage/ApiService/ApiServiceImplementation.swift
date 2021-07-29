@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ApiService: ApiServiceProtocol {
+public final class ApiService: ApiServiceProtocol {
     func getStockList(exchange: String, outputSize: Int, offset: Int, completion: @escaping ((_ data: StockList?, _ error: Error?) -> Void)) {
         MarketstackRequests.getStockListWithRequestBuilder(exchange: exchange,
                                                            outputSize: outputSize,

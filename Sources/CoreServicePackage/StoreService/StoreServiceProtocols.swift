@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol StoreProtocol {
+public protocol StoreProtocol {
     var favoriteData: [Stock] { get set }
     
     func addToFavorite(_ stock: Stock)

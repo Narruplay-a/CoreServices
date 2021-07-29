@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol NavigationTabModelProtocol {
+public protocol NavigationTabModelProtocol {
     var isTabBarVisible: Bool { get set }
     var selectedIndex: Int { get set }
     
@@ -15,19 +15,19 @@ protocol NavigationTabModelProtocol {
     func dismissPresentedView()
 }
 
-protocol NavigationModelProtocol {
+public protocol NavigationModelProtocol {
     var title: String { get set }
     
     func push<S: View>(_ screenView: S)
     func pop(to: PopDestination)
 }
 
-protocol NavigationRegisterProtocol {
+public protocol NavigationRegisterProtocol {
     func registerTabBarView(with model: NavigationTabModelProtocol)
     func registerNavigationView(with model: NavigationModelProtocol)
 }
 
-protocol NavigationControlProtocol {
+public protocol NavigationControlProtocol {
     var selectedTab: Int { get }
     
     func selectTab(with index: Int)
@@ -40,7 +40,7 @@ protocol NavigationControlProtocol {
     func updateNavigation(with title: String)
 }
 
-protocol NavigationProtocol: NavigationRegisterProtocol, NavigationControlProtocol { }
+public protocol NavigationProtocol: NavigationRegisterProtocol, NavigationControlProtocol { }
 
 public enum PopDestination {
     case previous

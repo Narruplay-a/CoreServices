@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class NavigationService: ObservableObject, NavigationProtocol {
+public final class NavigationService: ObservableObject, NavigationProtocol {
     private var navigation: NavigationModelProtocol?
     private var tabBar: NavigationTabModelProtocol?
     
