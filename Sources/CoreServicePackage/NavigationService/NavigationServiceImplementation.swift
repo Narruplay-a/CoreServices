@@ -42,7 +42,7 @@ open class NavigationService: ObservableObject, NavigationProtocol {
     }
     
     public func back(toRoot: Bool) {
-        navigation?.pop(to: toRoot ? .root : .previous)
+        navigation?.pop(toRoot: toRoot)
     }
     
     public func showTabBar() {

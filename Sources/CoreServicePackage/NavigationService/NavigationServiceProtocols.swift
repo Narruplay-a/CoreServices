@@ -19,7 +19,7 @@ public protocol NavigationModelProtocol {
     var title: String { get set }
     
     func push<S: View>(_ screenView: S)
-    func pop(to: PopDestination)
+    func pop(toRoot: Bool)
 }
 
 public protocol NavigationRegisterProtocol {
